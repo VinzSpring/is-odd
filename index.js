@@ -10,16 +10,15 @@
 const isNumber = require('is-number');
 
 module.exports = function isOdd(value) {
-  const n = Math.abs(value);
-  if (!isNumber(n)) {
+  if (!isNumber(value)) {
     throw new TypeError('expected a number');
   }
-  if (!Number.isInteger(n)) {
+  if (!Number.isInteger(value)) {
     throw new Error('expected an integer');
   }
-  if (!Number.isSafeInteger(n)) {
+  if (!Number.isSafeInteger(value)) {
     throw new Error('value exceeds maximum safe integer');
   }
-  return (n % 2) === 1;
+  return value & 1;
 };
 
